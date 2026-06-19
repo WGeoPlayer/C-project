@@ -1,22 +1,22 @@
 ﻿namespace PROject.Models;
 
-class Admin : User
+/// <summary>
+/// Represents a system administrator.
+/// </summary>
+public class Admin : User
 {
-    public Admin(string username, string password)
-        : base(username, password, "admin")
+    /// <summary>Initializes a new administrator account.</summary>
+    public Admin(string username, string password) : base(username, password, "admin")
     {
     }
 
+    /// <summary>Prints the administrative control menu.</summary>
     public override void ShowMenu()
     {
-        Console.WriteLine();
-        Console.WriteLine("1 - Show all clients");
-        Console.WriteLine("2 - Approve loans");
-        Console.WriteLine("3 - Delete a client");
-        Console.WriteLine("4 - Reset all data");
-        Console.WriteLine("5 - Log out");
+        Console.WriteLine("\n1 - Show all clients\n2 - Approve loans\n3 - Delete a client\n4 - Reset all data\n5 - Log out");
     }
 
+    /// <summary>Formats admin data for text file storage.</summary>
     public override string ToFileLine()
     {
         return "admin;" + Username + ";" + Password;
