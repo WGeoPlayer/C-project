@@ -19,7 +19,7 @@ public partial class AtmService : IAtmService
         bool running = true;
         while (running)
         {
-            Console.WriteLine("\n=== ATM ===\n1 - Register\n2 - Login\n3 - Exit");
+            Console.WriteLine("\n|>---<| ATM |>---<|\n1 - Register\n2 - Login\n3 - Exit");
             Console.Write("Choose: ");
             string? choice = Console.ReadLine();
 
