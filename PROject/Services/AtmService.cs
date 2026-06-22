@@ -23,9 +23,9 @@ public partial class AtmService : IAtmService
             Console.Write("Choose: ");
             string? choice = Console.ReadLine();
 
-            if (choice is "1" or "register" or "Register") { RegisterAccount(); }
-            else if (choice is "2" or "login" or "Login") { LoginSession(ref running); }
-            else if (choice is "3" or "exit" or "Exit") { running = false; }
+            if (choice == "1" || choice?.ToLower() == "register") { RegisterAccount(); }
+            else if (choice == "2" || choice?.ToLower() == "login") { LoginSession(ref running); }
+            else if (choice == "3" || choice?.ToLower() == "exit") { running = false; }
             else { Console.WriteLine("Wrong option."); }
         }
         Console.WriteLine("Bye!");
