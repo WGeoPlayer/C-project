@@ -10,7 +10,7 @@ public partial class AtmService
         if (double.TryParse(Console.ReadLine(), out double amt) && amt > 0)
         {
             client.Deposit(amt);
-            SaveUsersToFile(client);
+            SaveUsersToFile();
             Console.WriteLine($"Done. New balance:{client.Balance} {(client.Balance == 0 ? "" : "$")}");
         }
         else Console.WriteLine("Invalid amount.");
@@ -23,7 +23,7 @@ public partial class AtmService
         {
             if (client.Withdraw(amt))
             {
-                SaveUsersToFile(client);
+                SaveUsersToFile();
                 Console.WriteLine($"Done. New balance:{client.Balance} {(client.Balance == 0 ? "" : "$")}");
             }
             else Console.WriteLine("Insufficient funds.");
@@ -43,7 +43,7 @@ public partial class AtmService
             if (double.TryParse(Console.ReadLine(), out double amt) && amt > 0)
             {
                 client.LoanRequested = amt;
-                SaveUsersToFile(client);
+                SaveUsersToFile();
                 Console.WriteLine("Request sent.");
             }
             else Console.WriteLine("Invalid amount.");

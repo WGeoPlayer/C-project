@@ -1,10 +1,16 @@
-﻿namespace PROject.Models;
+﻿using System.Text.Json.Serialization;
+
+namespace PROject.Models;
+
+[JsonDerivedType(typeof(Client), "client")]
+[JsonDerivedType(typeof(Admin), "admin")]
 
 /// <summary>
 /// Represents a generic system user.
 /// </summary>
 public abstract class User
 {
+    public Guid Id { get; set; }
     /// <summary>Gets or sets the account username.</summary>
     public string Username { get; set; }
 
@@ -17,6 +23,7 @@ public abstract class User
     /// <summary>Initializes a new user account.</summary>
     public User(string username, string password, string role)
     {
+        Id = Guid.NewGuid();
         Username = username;
         Password = password;
         Role = role;

@@ -26,11 +26,9 @@ public partial class AtmService
                     Console.Write("\nThis deletes ALL data. Are you sure? (y/n): ");
                     if (Console.ReadLine()?.ToLower() == "y")
                     {
-                        if (File.Exists(filePath))
-                        {
-                            File.Delete(filePath);
-                        }
                         users.Clear();
+                        DataHandler.Save(users);
+
                         systemRunning = false;
                         active = false;
                     }

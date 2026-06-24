@@ -12,11 +12,11 @@ public class Client : User
     public double LoanRequested { get; set; }
 
     /// <summary>Initializes a new client with financial data.</summary>
-    public Client(string username, string password, double balance, double loan)
-        : base(username, password, "client")
+    public Client(string username, string password, double balance, double loanRequested)
+    : base(username, password, "client")
     {
         Balance = balance;
-        LoanRequested = loan;
+        LoanRequested = loanRequested;
     }
 
     /// <summary>Adds funds to the account.</summary>

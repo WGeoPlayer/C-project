@@ -9,8 +9,7 @@ namespace PROject.Services;
 /// </summary>
 public partial class AtmService : IAtmService
 {
-    private readonly string filePath = "users.txt";
-    private readonly List<User> users = new();
+    private List<User> users = new();
 
     /// <summary>Starts the main program loop execution.</summary>
     public void StartSystem()

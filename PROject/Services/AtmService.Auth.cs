@@ -18,11 +18,6 @@ public partial class AtmService
             Console.WriteLine("Invalid username.");
             return;
         }
-        if (users.Any(u => u.Username == name))
-        {
-            Console.WriteLine("Error: Username already exists.");
-            return;
-        }
 
         Console.Write("Password: ");
         string? pass = Console.ReadLine();

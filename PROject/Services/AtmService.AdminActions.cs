@@ -31,7 +31,7 @@ public partial class AtmService
         if (int.TryParse(Console.ReadLine(), out int idx) && idx >= 1 && idx <= pending.Count)
         {
             pending[idx - 1].ApproveLoan();
-            SaveUsersToFile(pending[idx - 1]);
+            SaveUsersToFile();
         }
     }
 
