@@ -27,39 +27,53 @@ public partial class AtmService
             return;
         }
 
+        Console.Write("Email: ");
+        string? email = Console.ReadLine();
+        if (string.IsNullOrWhiteSpace(email) || !email.Contains("@"))
+        {
+            Console.WriteLine("Invalid email.");
+            return;
+        }
+
+        if (users.Any(u => u.Email == email))
+        {
+            Console.WriteLine("Error: A user with this email already exists.");
+            return;
+        }
+
         Console.Write("Role (client/admin): ");
         string? role = Console.ReadLine();
         if (role != "client" && role != "admin") { return; }
 
-        if (role == "client") { users.Add(new Client(name, pass, 0, 0)); }
+        if (role == "client") { users.Add(new Client(name, pass, email, 0, 0)); }
         else
         {
             Console.Write("Admin Code: ");
             if (Console.ReadLine() != "7777") return;
-            users.Add(new Admin(name, pass));
+            users.Add(new Admin(name, pass, email));
         }
         SaveUsersToFile();
         Console.WriteLine("Registration done.");
     }
 
     /// <summary>Validates user identity credentials and initialises targeted runtime sessions.</summary>
-    private void LoginSession(ref bool systemRunning)
+    private void LoginSession(ref bool running)
     {
-        Console.Write("-----------------------------\nUsername: ");
-        string? name = Console.ReadLine();
+        Console.Write("Email: ");
+        string? email = Console.ReadLine();
+
         Console.Write("Password: ");
         string? pass = Console.ReadLine();
 
-        User? user = users.FirstOrDefault(u => u.Username == name && u.Password == pass);
+        User? user = users.FirstOrDefault(u => u.Email == email && u.Password == pass);
 
-        if (user == null)
+        if (user != null)
         {
-            Console.WriteLine("Error: Username or password incorrect.");
-            return;
+            Console.WriteLine($"Welcome back, {user.Username}!");
         }
-        Console.WriteLine("---------------------------------");
-        Console.WriteLine($"Welcome {user.Username}!");
-        if (user is Client c) { RunClientMenu(c); }
-        else if (user is Admin a) { RunAdminMenu(a, ref systemRunning); }
+        else
+        {
+            Console.WriteLine("Invalid email or password.");
+        }
     }
 }

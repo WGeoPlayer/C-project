@@ -12,8 +12,7 @@ public class Client : User
     public double LoanRequested { get; set; }
 
     /// <summary>Initializes a new client with financial data.</summary>
-    public Client(string username, string password, double balance, double loanRequested)
-    : base(username, password, "client")
+    public Client(string username, string password, string email, double balance, double loanRequested) : base(username, password, email, "client")
     {
         Balance = balance;
         LoanRequested = loanRequested;
@@ -44,11 +43,5 @@ public class Client : User
     public override void ShowMenu()
     {
         Console.WriteLine("\n1 - Check balance\n2 - Deposit\n3 - Withdraw\n4 - Request loan\n5 - Delete my account\n6 - Log out");
-    }
-
-    /// <summary>Formats client data for text file storage.</summary>
-    public override string ToFileLine()
-    {
-        return "client;" + Username + ";" + Password + ";" + Balance + ";" + LoanRequested;
     }
 }
