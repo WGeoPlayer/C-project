@@ -70,6 +70,14 @@ public partial class AtmService
         if (user != null)
         {
             Console.WriteLine($"Welcome back, {user.Username}!");
+            if (user is Client client)
+            {
+                RunClientMenu(client);
+            }
+            else if (user is Admin admin)
+            {
+                RunAdminMenu(admin, ref running);
+            }
         }
         else
         {
